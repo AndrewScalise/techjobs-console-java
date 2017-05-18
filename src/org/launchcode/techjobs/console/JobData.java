@@ -132,10 +132,23 @@ public class JobData {
 
         ArrayList<HashMap<String, String>> results = new ArrayList<>();
 
-        for (HashMap<String, String> jobs : allJobs) {
 
-            if (jobs.containsValue(value)) {
-                results.add(jobs);
+
+
+        for (HashMap<String, String> jobs : allJobs) {
+            //Array of string values for each hash map
+            String[] values = new String[jobs.size()];
+            int index = 0;
+
+            for(HashMap.Entry<String,String> entry: jobs.entrySet()){
+
+                //assign the values in the hashmap to check each string
+                values[index] = entry.getValue();
+                if(values[index].toLowerCase().contains(value.toLowerCase())){
+                    results.add(jobs);
+                    break;
+                }
+                index++;
             }
         }
 
